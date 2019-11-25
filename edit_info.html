@@ -3,13 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Recover password</title>
+	<title>Edit Parsonal Information</title>
 	<link rel="stylesheet" type="text/css" href="../css/css/all.css">
-	<link rel="stylesheet" type="text/css" href="../css/singup.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 
 
 	<style>
-		/*         ====================================== Response from the phone ==================================================== */
+
+
+
+	/*         ====================================== Response from the phone ==================================================== */
 
 	@media screen and (min-width:320px) and (max-width:443px){
 
@@ -178,40 +181,41 @@
 	}
 
 
-		.box{
-			height: 321px !important;
-		}
-		.submit{
-			    margin: 20px auto 20px !important;
-		}
-		form{
-			margin-top: 50px !important;
-		}
-		.far{padding-top: 3px !important;}
+
 	</style>
 </head>
 <body>
 
 <div class="box">
-	<!-- image and text sing up -->
-  <img src="../images/forgot-password.png" alt="image-sing-up">
-  
+	<!-- image and text  Edit Information -->
+  <img src="../images/edit.png" alt="image-Edit-Information">
+  <p>  Edit Information </p>
 
 
- <!-- Form information  -->
+  <!-- Form Input Information -->
   <form>
-  	<p>  Recover your password </p>
     <div class="form-input">
-      <input type="email" placeholder="Enter your email" autofocus required>
+      <input type="text" placeholder="Name" autofocus autocomplete="on" required>
+      <i class="far fa-user"></i>
+    </div>
+    <div class="form-input">
+      <input type="email" placeholder="Email" autocomplete="on" required>
       <i class="far fa-envelope"></i>
     </div>
-    
-   
+    <div class="form-input">
+      <input type="password" placeholder="Password" autocomplete="on" required>
+      <i class="fas fa-key"></i>
+    </div>
+		<div class="form-input">
+      <input type="password" placeholder=" Rewrite Password"  autocomplete="on" required>
+      <i class="fas fa-key"></i>
+    </div>
 
 			<input class="submit" type="submit" value="submit">
-			
-  </form>
+			<span class="psw">going to <a href="mynote.html">Mynote</a></span>
 
+
+  </form>
 </div>
 
 </body>
