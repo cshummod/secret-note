@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>MyNote</title>
+	<link rel="stylesheet" href="resources/css/css/all.css" type="text/css">
+	<link rel="stylesheet" href="resources/css/mynote.css" type="text/css">
+	<style>
+		/*         ====================================== Response from the phone ==================================================== */
+
+
+		@media screen and (min-width:320px) and (max-width:443px) {
+
+
+			/* Box card */
+			.box {
+				width: 250px;
+				margin-top: 20px;
+				margin-bottom: 80PX;
+				margin-left: 17px;
+			}
+
+			/* ------------------- */
+
+
+			/* Note display */
+
+			.note {
+
+				width: 210px;
+				margin-right: 30px;
+				margin-bottom: 30PX;
+				padding: 10px;
+			}
+
+
+			h3,
+			p,
+			a {
+
+				padding: 5px;
+				margin: 4px;
+				border-radius: 5px;
+			}
+
+		}
+
+
+
+		@media screen and (min-width:444px) and (max-width:539px) {
+
+
+
+			/* Box card */
+			.box {
+				width: 320px;
+				margin-top: 20px;
+				margin-bottom: 80PX;
+				margin-left: 17px;
+			}
+
+			/* ------------------- */
+
+
+			/* Note display */
+
+			.note {
+
+				width: 280px;
+				margin-right: 120px;
+				margin-bottom: 30PX;
+				padding: 10px;
+			}
+
+
+			h3,
+			p,
+			a {
+
+				padding: 5px;
+				margin: 4px;
+				border-radius: 5px;
+			}
+		}
+
+
+
+		@media screen and (min-width:540px) and (max-width:680px) {
+
+
+
+			/* Box card */
+			.box {
+				width: 400px;
+				margin-top: 20px;
+				margin-bottom: 80PX;
+				margin-left: 33px;
+			}
+
+			/* ------------------- */
+
+
+			/* Note display */
+
+			.note {
+
+				width: 360px;
+				margin-bottom: 30PX;
+				padding: 10px;
+			}
+
+
+			h3,
+			p,
+			a {
+
+				padding: 5px;
+				margin: 4px;
+				border-radius: 5px;
+			}
+		}
+
+
+		@media screen and (min-width:681px) and (max-width:767px) {
+
+
+
+			/* Box card */
+			.box {
+				width: 550px;
+				margin-top: 20px;
+				margin-bottom: 80PX;
+				margin-left: 23px;
+			}
+
+			/* ------------------- */
+
+
+			/* Note display */
+
+			.note {
+
+				width: 500px;
+				margin-bottom: 30PX;
+				padding: 10px;
+			}
+
+
+			h3,
+			p,
+			a {
+
+				padding: 5px;
+				margin: 4px;
+				border-radius: 5px;
+			}
+		}
+
+
+		/*         ====================================== Response from the tab ==================================================== */
+
+
+		@media screen and (min-width:768px) and (max-width:900px) {
+
+
+
+			/* Box card */
+			.box {
+				width: 650px;
+				margin-top: 20px;
+				margin-bottom: 400PX;
+				margin-left: 20px;
+			}
+
+			/* ------------------- */
+
+
+			/* Note display */
+
+			.note {
+
+				width: 610px;
+				margin-right: 120px;
+				margin-bottom: 30PX;
+				padding: 10px;
+			}
+
+
+			h3,
+			p,
+			a {
+
+				padding: 5px;
+				margin: 4px;
+				border-radius: 5px;
+			}
+		}
+
+
+
+		@media screen and (min-width:901px) and (max-width:1024px) {
+
+
+
+			/* Box card */
+			.box {
+				width: 780px;
+				margin-top: 20px;
+				margin-bottom: 500PX;
+				margin-left: 75px;
+			}
+
+			/* ------------------- */
+
+
+			/* Note display */
+
+			.note {
+
+				width: 740px;
+				margin-right: 120px;
+				margin-bottom: 30PX;
+				padding: 10px;
+			}
+
+
+			h3,
+			p,
+			a {
+
+				padding: 5px;
+				margin: 4px;
+				border-radius: 5px;
+			}
+		}
+
+
+
+		@media screen and (min-width:1025px) and (max-width:1436px) {
+
+
+
+			/* Box card */
+			.box {
+				width: 850px;
+				margin-top: 20px;
+				margin-bottom: 400PX;
+				margin-left: 90px;
+			}
+
+			/* ------------------- */
+
+
+			/* Note display */
+
+			.note {
+
+				width: 780px;
+				margin-right: 120px;
+				margin-bottom: 30PX;
+				padding: 10px;
+			}
+
+
+			h3,
+			p,
+			a {
+
+				padding: 5px;
+				margin: 4px;
+				border-radius: 5px;
+			}
+		}
+
+
+		/* -------------------- */
+	</style>
+</head>
+
+<body>
+
+	<!-- BOX All display -->
+	<div class="box">
+
+		<!--  Nav Head -->
+		<nav>
+			<ul>
+				<li> <a href="addNote.html"> <i class="far fa-sticky-note"></i>AddNote </a> </li>
+				<li> <a id="mynote" href="mynote.html"> <i class="far fa-file-alt"></i> MyNote </a> </li>
+				<li> <a href="newEDIT.html"> <i class="far fa-edit"></i>Edit info </a> </li>
+				<li> <a href="http//#"> <i class="fas fa-sign-out-alt"></i>Logout </a> </li>
+				<ul>
+					<nav>
+
+
+
+						<!-- Note display -->
+						<div class="note">
+							<h3> Titel: Summary of the meeting </h3>
+							<p>
+								this is my note area:he meeting summary
+								should be concise and summarizes perfectly
+								the key points that have been discussed.
+								First list down what is the main agenda of
+								the meeting. List down the names of the people
+								who attended the meeting. In another list below it,
+								list down also who were not present in the meeting
+							</p>
+
+							<a href="#"> <i class="far fa-edit"></i> Edit </a>
+							<a href="#"><i class="far fa-trash-alt"></i> Delete </a>
+						</div>
+						<div class="note">
+							<h3> Titel: Summary of the meeting </h3>
+							<p>
+								this is my note area:he meeting summary
+								should be concise and summarizes perfectly
+								the key points that have been discussed.
+								First list down what is the main agenda of
+								the meeting. List down the names of the people
+								who attended the meeting. In another list below it,
+								list down also who were not present in the meeting
+							</p>
+
+							<a href="#"> <i class="far fa-edit"></i> Edit </a>
+							<a href="#"><i class="far fa-trash-alt"></i> Delete </a>
+							</di>
+
+
+
+
+						</div>
+
+
+</body>
+
+</html>

@@ -1,12 +1,15 @@
+<?php include('server.php') ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Recover password</title>
-	<link rel="stylesheet" type="text/css" href="../resources/css/css/all.css">
-	<link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+	<title>sign Up</title>
+	<link rel="stylesheet" type="text/css" href="resources/css/css/all.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 
 
 	<style>
@@ -129,8 +132,6 @@
 			}
 
 			/* ------------------------- */
-
-
 			/*  Picture above the box */
 			img {
 
@@ -188,49 +189,38 @@
 				/* ------------------------- */
 			}
 		}
-
-
-		.box {
-			height: 321px !important;
-		}
-
-		.submit {
-			margin: 20px auto 20px !important;
-		}
-
-		form {
-			margin-top: 50px !important;
-		}
-
-		.far {
-			padding-top: 3px !important;
-		}
 	</style>
 </head>
 
 <body>
-
 	<div class="box">
 		<!-- image and text sign up -->
-		<img src="../resources/images/forgot-password.png" alt="image-sign-up">
-
-
-
+		<img src="resources/images/signup.png" alt="image-sign-up">
+		<p> sign up </p>
 		<!-- Form information  -->
-		<form>
-			<p> Recover your password </p>
+		<form method="POST" action="signup.php">
 			<div class="form-input">
-				<input type="email" placeholder="Enter your email" autofocus required>
+				<input type="username" placeholder="Name" name="name" autofocus required>
+				<i class="far fa-user"></i>
+			</div>
+			<div class="form-input">
+				<input type="email" placeholder="Email" name="email" autocomplete="on" required>
 				<i class="far fa-envelope"></i>
 			</div>
-
-
-
-			<input class="submit" type="submit" value="submit">
-
+			<div class="form-input">
+				<input type="password" placeholder="Password" name="password" required>
+				<i class="fas fa-lock"></i>
+			</div>
+			<div class="form-input">
+				<input type="password" placeholder=" Rewrite Password" name="passwordconf" required>
+				<i class="fas fa-lock"></i>
+			</div>
+			<input class="submit" type="submit" value="submit" name="register">
 		</form>
 
 	</div>
+
+
 
 </body>
 
