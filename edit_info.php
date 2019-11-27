@@ -1,25 +1,16 @@
+<?php include('server.php') ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Log In</title>
-	<link rel="stylesheet" type="text/css" href="../resources/css/css/all.css">
-	<link rel="stylesheet" type="text/css" href="../resources/css/style.css">
-
+	<title>Edit Personal Information</title>
+	<link rel="stylesheet" type="text/css" href="resources/css/css/all.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 
 	<style>
-		.box {
-			height: 375px !important;
-		}
-
-		.submit {
-			margin: 20px auto 20px !important;
-		}
-
-		/*         ====================================== Response from the phone ==================================================== */
-
 		@media screen and (min-width:320px) and (max-width:443px) {
 
 			/*  Box card */
@@ -31,15 +22,11 @@
 				margin-right: 5px;
 			}
 
-			/* ------------------------- */
-
-
 			/*  Picture above the box */
 			img {
 
 				margin-top: 105px;
 				margin-left: 80px;
-				/* ------------------------- */
 			}
 		}
 
@@ -56,15 +43,11 @@
 
 			}
 
-			/* ------------------------- */
-
-
 			/*  Picture above the box */
 			img {
 
 				margin-top: 115px;
 				margin-left: 100px;
-				/* ------------------------- */
 			}
 
 		}
@@ -85,15 +68,10 @@
 
 			}
 
-			/* ------------------------- */
-
-
 			/*  Picture above the box */
 			img {
-
 				margin-top: 95px;
 				margin-left: 100px;
-				/* ------------------------- */
 			}
 		}
 
@@ -202,29 +180,27 @@
 <body>
 
 	<div class="box">
-		<!-- image and text sign up -->
-		<img src="../resources/images/signup.png" alt="image-sign-up">
-		<p> log in </p>
+		<!-- image and text  Edit Information -->
+		<img src="resources/images/edit.png" alt="image-Edit-Information">
+		<p> Edit Information </p>
 
 
-		<!-- Form information  -->
-		<form>
+		<!-- Form Input Information -->
+		<form method="POST" action="edit_info.php">
 			<div class="form-input">
-				<input type="text" placeholder="Enter username" autofocus required>
+				<input type="text" placeholder="Name" name="name" required>
 				<i class="far fa-user"></i>
 			</div>
 			<div class="form-input">
-				<input type="email" placeholder="Enter password" autocomplete="on" required>
-				<i class="far fa-envelope"></i>
+				<input type="password" placeholder="Current Password" name="curr-password" required>
+				<i class="fas fa-key"></i>
 			</div>
-
-
-			<input class="submit" type="submit" value="log in">
-			<span class="psw">Forgot <a href="forgot_password.html">password?</a></span>
-
-
+			<div class="form-input">
+				<input type="password" placeholder="New Password" name="new-password" required>
+				<i class="fas fa-key"></i>
+			</div>
+			<input class="submit" type="submit" value="submit" name="edit-info">
 		</form>
-
 	</div>
 
 </body>

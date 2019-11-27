@@ -198,7 +198,7 @@
 		<img src="resources/images/signup.png" alt="image-sign-up">
 		<p> sign up </p>
 		<!-- Form information  -->
-		<form method="POST" action="signup.php">
+		<form method="POST" action="register.php">
 			<div class="form-input">
 				<input type="username" placeholder="Name" name="name" autofocus required>
 				<i class="far fa-user"></i>

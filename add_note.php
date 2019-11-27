@@ -1,13 +1,34 @@
+<?php include('server.php') ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>MyNote</title>
+	<title>Add Note</title>
 	<link rel="stylesheet" href="resources/css/css/all.css" type="text/css">
 	<link rel="stylesheet" href="resources/css/mynote.css" type="text/css">
+
 	<style>
+		input {
+			width: 92%;
+			padding: 10px;
+			padding-left: 29px;
+			border: none;
+			background: #eee;
+
+		}
+
+		textarea {
+			width: 92%;
+			padding: 10px;
+			padding-left: 29px;
+			border: none;
+			background: #eee;
+			resize: none;
+		}
+
 		/*         ====================================== Response from the phone ==================================================== */
 
 
@@ -272,6 +293,12 @@
 				margin: 4px;
 				border-radius: 5px;
 			}
+
+			button .add-btn {
+				outline: none !important;
+				border: none !important;
+				color: red !important;
+			}
 		}
 
 
@@ -287,8 +314,8 @@
 		<!--  Nav Head -->
 		<nav>
 			<ul>
-				<li> <a href="addNote.html"> <i class="far fa-sticky-note"></i>AddNote </a> </li>
-				<li> <a id="mynote" href="mynote.html"> <i class="far fa-file-alt"></i> MyNote </a> </li>
+				<li> <a id="mynote" href="addNote.html"> <i class="far fa-sticky-note"></i>Add Note</a> </li>
+				<li> <a href="mynote.html"> <i class="far fa-file-alt"></i> MyNote </a> </li>
 				<li> <a href="newEDIT.html"> <i class="far fa-edit"></i>Edit info </a> </li>
 				<li> <a href="http//#"> <i class="fas fa-sign-out-alt"></i>Logout </a> </li>
 				<ul>
@@ -298,42 +325,14 @@
 
 						<!-- Note display -->
 						<div class="note">
-							<h3> Titel: Summary of the meeting </h3>
-							<p>
-								this is my note area:he meeting summary
-								should be concise and summarizes perfectly
-								the key points that have been discussed.
-								First list down what is the main agenda of
-								the meeting. List down the names of the people
-								who attended the meeting. In another list below it,
-								list down also who were not present in the meeting
-							</p>
-
-							<a href="#"> <i class="far fa-edit"></i> Edit </a>
-							<a href="#"><i class="far fa-trash-alt"></i> Delete </a>
+							<form method="POST" action="add_note.php">
+								<input type="text" id="" placeholder="Your Title" name="title">
+								<br>
+								<br>
+								<textarea rows="4" cols="50" placeholder="Your Note" name="content"></textarea>
+								<button type="submit" name="add-note" class="add-btn"><i class="fas fa-plus"></i> Add</button>
+							</form>
 						</div>
-						<div class="note">
-							<h3> Titel: Summary of the meeting </h3>
-							<p>
-								this is my note area:he meeting summary
-								should be concise and summarizes perfectly
-								the key points that have been discussed.
-								First list down what is the main agenda of
-								the meeting. List down the names of the people
-								who attended the meeting. In another list below it,
-								list down also who were not present in the meeting
-							</p>
-
-							<a href="#"> <i class="far fa-edit"></i> Edit </a>
-							<a href="#"><i class="far fa-trash-alt"></i> Delete </a>
-							</di>
-
-
-
-
-						</div>
-
-
 </body>
 
 </html>

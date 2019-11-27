@@ -12,8 +12,8 @@ $errors = array();
 define("DB_HOST", "localhost");
 define("DB_USER", "root");
 define("DB_PASSWORD", "root");
-define("DB_DATABASE", "sn_db");
-$conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
+define("DB_NAME", "sn_db");
+$conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
 
 //capture the value from the form
@@ -39,10 +39,100 @@ if (isset($_POST['register'])) {
     // if there is no errors during the process then insert the user to db
     if (count($errors) == 0) {
         $password = md5($password);
-        $insert_usr = "INSERT INTO users(name,email,password)  VALUES('$name', '$email', '$password') ";
-        mysqli_query($conn, $insert_usr);
-        $_SESSION['name'] = $name;
+        $query = "INSERT INTO users(name,email,password)  VALUES('$name', '$email', '$password') ";
+        mysqli_query($conn, $query);
+        $_SESSION['email'] = $email;
         $_SESSION['success'] = "You are now logged in";
-        header('location: index.php');
+        header('location: mynotes.php');
     }
 }
+
+
+// user login
+
+if (isset($_POST['login'])) {
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+
+    if (empty($email)) {
+        array_push($errors, "Email is required");
+    }
+    if (empty($password)) {
+        array_push($errors, "Password is required");
+    }
+
+    if (count($errors) == 0) {
+        $password = md5($password);
+        $query = "SELECT * FROM users WHERE email='$email' AND password='$password'";
+        $results = mysqli_query($conn, $query);
+        if (mysqli_num_rows($results) == 1) {
+            $_SESSION['email'] = $email;
+            $_SESSION['success'] = "You are now logged in";
+            header('location: mynotes.php');
+        } else {
+            array_push($errors, "Wrong email/password");
+        }
+    }
+}
+
+
+// Add-note
+if (isset($_POST['add-note'])) {
+    $title = mysqli_real_escape_string($conn, $_POST['title']);
+    $content = mysqli_real_escape_string($conn, $_POST['content']);
+
+    if (empty($title)) {
+        array_push($errors, "Title can't be empty");
+    }
+    if (empty($content)) {
+        array_push($errors, "Content can't be empty");
+    }
+
+    if (count($errors) == 0) {
+        $email = $_SESSION['email'];
+        $query = "INSERT INTO notes(title,content,userID)  VALUES('$title', '$content','$email') ";
+        $results = mysqli_query($conn, $query);
+        header('location: mynotes.php');
+    }
+}
+
+
+// edit personal information
+if (isset($_POST['edit-info'])) {
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $currentPassword = mysqli_real_escape_string($conn, $_POST['curr-password']);
+    $newPassword = mysqli_real_escape_string($conn, $_POST['new-password']);
+
+    if (empty($name)) {
+        array_push($errors, "Name can't be empty");
+    }
+    if (empty($currentPassword)) {
+        array_push($errors, "Current password can't be empty");
+    }
+    if (empty($newPassword)) {
+        array_push($errors, "New password can't be empty");
+    }
+    if (count($errors) == 0) {
+        $session_email = $_SESSION['email'];
+        $query = "SELECT * FROM users where email = '$session_email'";
+        $result = mysqli_query($conn, $query);
+        $rows = mysqli_fetch_array($result);
+        echo '<h1>' . $rows['password'] . '</h1>';
+        echo '<h1>' . md5($currentPassword) . '</h1>';
+
+        // TODO: FIX
+        if ($rows['password'] == 'md5(' . md5($currentPassword) . ')') {
+            $hashedNewPassword = md5($newPassword);
+            $query = "UPDATE users SET name = '$name', password = 'md5($hashedNewPassword)' where email = '$session_email'";
+            $results = mysqli_query($conn, $query);
+            header('location: mynotes.php');
+        } else {
+            echo '<h1> Password not correct</h1>';
+        }
+    }
+}
+
+
+// Edit/Delete Note
+
+

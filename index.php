@@ -324,8 +324,8 @@
 		<nav>
 			<ul>
 				<li> <a id="home" href="#"> <i class="fas fa-home"></i> Home</a> </li>
-				<li> <a href="login.html"> <i class="fas fa-sign-in-alt"></i> sign In</a> </li>
-				<li> <a href="signup.html"> <i class="fas fa-user-plus"></i> sign Up</a> </li>
+				<li> <a href="login.php"> <i class="fas fa-sign-in-alt"></i> Login</a> </li>
+				<li> <a href="register.php"> <i class="fas fa-user-plus"></i> Register</a> </li>
 				<li> <a href="#footer"> <i class="fas fa-info"></i> About</a> </li>
 			</ul>
 		</nav>
