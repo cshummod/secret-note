@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>SN| My Notes</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="resources/css/css/all.css" type="text/css">
+	<link rel="stylesheet" href="resources/css/fontawesome/all.css" type="text/css">
 	<link rel="stylesheet" href="resources/css/mynote.css" type="text/css">
 	<style>
 		/*         ====================================== Response from the phone ==================================================== */
@@ -292,7 +292,7 @@
 				<li> <a id="mynote" href="mynotes.php"> <i class="far fa-file-alt"></i> My Notes </a> </li>
 				<li> <a href="add_note.php"> <i class="far fa-sticky-note"></i>Add Note </a> </li>
 				<li> <a href="edit_info.php"> <i class="far fa-edit"></i>Edit info </a> </li>
-				<li> <a href="http//#"> <i class="fas fa-sign-out-alt"></i>Logout </a> </li>
+				<li> <a href="logout.php"> <i class="fas fa-sign-out-alt"></i> Logout </a> </li>
 				<ul>
 		</nav>
 
@@ -300,6 +300,7 @@
 		$conn = new mysqli("localhost", "root", "root", "sn_db");
 
 		$email = $_SESSION['email'];
+		// TODO: delete problem
 		$query = "SELECT * FROM notes where userID = '$email' order by created desc";
 		$result = mysqli_query($conn, $query);
 
@@ -311,27 +312,27 @@
 			echo '<h3> Titel: ' . $title . '</h3>';
 			echo '<p>' . $content . '</p>';
 			// TODO: style ID
-			echo '<form action="mynotes.php" method="get">
-            <i class="far fa-edit"><input type="submit" name="edit" value="edit" style=" padding:5px; outline:none; border:none; background-color: rgba(0,0,0,0.0);"></i>
-            <i class="far fa-trash-alt"><input type="submit" name="delete" value="delete" style=" padding:5px; outline:none; border:none; background-color: rgba(0,0,0,0.0);"></i>
-			</form>';
+			echo "<form action='mynotes.php'>
+            <i class='far fa-edit'><input type='submit' name='edit' value='edit' style=' padding:5px; outline:none; border:none; background-color: rgba(0,0,0,0.0);'></i>
+            <i class='far fa-trash-alt'><input type='submit' name='delete' value='delete' style=' padding:5px; outline:none; border:none; background-color: rgba(0,0,0,0.0);'></i>
+			</form>";
 			echo '</div>';
+		}
+		if (isset($_GET['edit'])) {
+			echo "<script type='text/javascript'> window.location = 'edit_note.php?id=" . $noteID . "' </script>";
+		}
+		if (isset($_GET['delete'])) {
+			$query = "DELETE FROM notes where id = '$noteID'";
+			if ($conn->query($query) === TRUE) {
 
-			if (isset($_GET['edit'])) {
-				header('location: edit_note.php');
-			}
-			if (isset($_GET['delete'])) {
-				$query = "DELETE FROM notes where id = '$noteID'";
-				if ($conn->query($query) === TRUE) {
-
-					echo '<script type="text/javascript">
+				echo '<script type="text/javascript">
          				  window.location = "mynotes.php"
      					 </script>';
-				} else {
-					echo "Error deleting record: " . $conn->error;
-				}
+			} else {
+				echo "Error deleting record: " . $conn->error;
 			}
 		}
+
 		?>
 
 

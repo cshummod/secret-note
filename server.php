@@ -132,7 +132,34 @@ if (isset($_POST['edit-info'])) {
     }
 }
 
+// Recover Password
+if (isset($_POST['recover-password'])) {
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $newPassword = mysqli_real_escape_string($conn, $_POST['new-password']);
+    $confPassword = mysqli_real_escape_string($conn, $_POST['conf-password']);
 
-// Edit/Delete Note
 
+    if (empty($email)) {
+        array_push($errors, "Email can't be empty");
+    }
+    if (empty($newPassword)) {
+        array_push($errors, "New password can't be empty");
+    }
+    if (empty($confPassword)) {
+        array_push($errors, "Confirm password can't be empty");
+    }
+    if (count($errors) == 0) {
+        $query = "SELECT * FROM users where email = '$email'";
+        $result = mysqli_query($conn, $query);
+        $rows = mysqli_fetch_array($result);
 
+        if ($rows['email'] == $email) {
+            $newPassword = md5($newPassword);
+            $query = "UPDATE users SET password = '$newPassword' where email = '$email'";
+            $results = mysqli_query($conn, $query);
+            header('location: login.php');
+        } else {
+            echo '<h1> Error</h1>';
+        }
+    }
+}

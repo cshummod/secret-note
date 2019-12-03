@@ -7,7 +7,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>Edit Personal Information</title>
-	<link rel="stylesheet" type="text/css" href="resources/css/css/all.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/fontawesome/all.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 
 	<style>

@@ -1,3 +1,6 @@
+<?php include('server.php') ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,8 +8,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>Recover password</title>
-	<link rel="stylesheet" type="text/css" href="../resources/css/css/all.css">
-	<link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/fontawesome/all.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 
 
 	<style>
@@ -191,7 +194,7 @@
 
 
 		.box {
-			height: 321px !important;
+			height: 400px !important;
 		}
 
 		.submit {
@@ -212,24 +215,25 @@
 
 	<div class="box">
 		<!-- image and text sign up -->
-		<img src="../resources/images/forgot-password.png" alt="image-sign-up">
-
-
-
+		<img src="resources/images/forgot-password.png" alt="image-sign-up">
 		<!-- Form information  -->
-		<form>
+		<form method="POST" action="forgot_password.php">
 			<p> Recover your password </p>
 			<div class="form-input">
-				<input type="email" placeholder="Enter your email" autofocus required>
+				<input type="email" placeholder="Enter your email" name="email" autofocus required>
 				<i class="far fa-envelope"></i>
 			</div>
-
-
-
-			<input class="submit" type="submit" value="submit">
+			<div class="form-input">
+				<input type="password" placeholder="New Password" name="new-password" autofocus required>
+				<i class="fas fa-lock"></i>
+			</div>
+			<div class="form-input">
+				<input type="password" placeholder="Confirm New Password" name="conf-password" autofocus required>
+				<i class="fas fa-lock"></i>
+			</div>
+			<input class="submit" type="submit" value="submit" name="recover-password">
 
 		</form>
-
 	</div>
 
 </body>

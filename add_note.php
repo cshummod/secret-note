@@ -7,7 +7,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>Add Note</title>
-	<link rel="stylesheet" href="resources/css/css/all.css" type="text/css">
+	<link rel="stylesheet" href="resources/css/fontawesome/all.css" type="text/css">
 	<link rel="stylesheet" href="resources/css/mynote.css" type="text/css">
 
 	<style>
@@ -314,10 +314,10 @@
 		<!--  Nav Head -->
 		<nav>
 			<ul>
-				<li> <a id="mynote" href="addNote.html"> <i class="far fa-sticky-note"></i>Add Note</a> </li>
-				<li> <a href="mynote.html"> <i class="far fa-file-alt"></i> MyNote </a> </li>
-				<li> <a href="newEDIT.html"> <i class="far fa-edit"></i>Edit info </a> </li>
-				<li> <a href="http//#"> <i class="fas fa-sign-out-alt"></i>Logout </a> </li>
+				<li> <a href="mynotes.php"> <i class="far fa-file-alt"></i> MyNote </a> </li>
+				<li> <a id="mynote" href="add_note.php"> <i class="far fa-sticky-note"></i>Add Note</a> </li>
+				<li> <a href="edit_info.php"> <i class="far fa-edit"></i>Edit info </a> </li>
+				<li> <a href="logout.php"> <i class="fas fa-sign-out-alt"></i>Logout </a> </li>
 				<ul>
 					<nav>
 
