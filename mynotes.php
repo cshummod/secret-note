@@ -1,4 +1,10 @@
-<?php include('server.php') ?>
+<?php include('server.php');
+
+if ($_SESSION["loggedIn"] != true) {
+	header("Location: login.php");
+	exit;
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,16 +14,12 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>SN| My Notes</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<!-- https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use -->
 	<link rel="stylesheet" href="resources/css/fontawesome/all.css" type="text/css">
 	<link rel="stylesheet" href="resources/css/mynote.css" type="text/css">
 	<style>
-		/*         ====================================== Response from the phone ==================================================== */
-
-
+		/* Phones */
 		@media screen and (min-width:320px) and (max-width:443px) {
-
-
-			/* Box card */
 			.box {
 				width: 250px;
 				margin-top: 20px;
@@ -25,24 +27,16 @@
 				margin-left: 17px;
 			}
 
-			/* ------------------- */
-
-
-			/* Note display */
-
 			.note {
-
 				width: 210px;
 				margin-right: 30px;
 				margin-bottom: 30PX;
 				padding: 10px;
 			}
 
-
 			h3,
 			p,
 			a {
-
 				padding: 5px;
 				margin: 4px;
 				border-radius: 5px;
@@ -50,13 +44,7 @@
 
 		}
 
-
-
 		@media screen and (min-width:444px) and (max-width:539px) {
-
-
-
-			/* Box card */
 			.box {
 				width: 320px;
 				margin-top: 20px;
@@ -64,37 +52,23 @@
 				margin-left: 17px;
 			}
 
-			/* ------------------- */
-
-
-			/* Note display */
-
 			.note {
-
 				width: 280px;
 				margin-right: 120px;
 				margin-bottom: 30PX;
 				padding: 10px;
 			}
 
-
 			h3,
 			p,
 			a {
-
 				padding: 5px;
 				margin: 4px;
 				border-radius: 5px;
 			}
 		}
 
-
-
 		@media screen and (min-width:540px) and (max-width:680px) {
-
-
-
-			/* Box card */
 			.box {
 				width: 400px;
 				margin-top: 20px;
@@ -102,23 +76,15 @@
 				margin-left: 33px;
 			}
 
-			/* ------------------- */
-
-
-			/* Note display */
-
 			.note {
-
 				width: 360px;
 				margin-bottom: 30PX;
 				padding: 10px;
 			}
 
-
 			h3,
 			p,
 			a {
-
 				padding: 5px;
 				margin: 4px;
 				border-radius: 5px;
@@ -127,10 +93,6 @@
 
 
 		@media screen and (min-width:681px) and (max-width:767px) {
-
-
-
-			/* Box card */
 			.box {
 				width: 550px;
 				margin-top: 20px;
@@ -138,38 +100,23 @@
 				margin-left: 23px;
 			}
 
-			/* ------------------- */
-
-
-			/* Note display */
-
 			.note {
-
 				width: 500px;
 				margin-bottom: 30PX;
 				padding: 10px;
 			}
 
-
 			h3,
 			p,
 			a {
-
 				padding: 5px;
 				margin: 4px;
 				border-radius: 5px;
 			}
 		}
 
-
-		/*         ====================================== Response from the tab ==================================================== */
-
-
+		/* Tablets */
 		@media screen and (min-width:768px) and (max-width:900px) {
-
-
-
-			/* Box card */
 			.box {
 				width: 650px;
 				margin-top: 20px;
@@ -177,38 +124,24 @@
 				margin-left: 20px;
 			}
 
-			/* ------------------- */
-
-
-			/* Note display */
-
 			.note {
-
 				width: 610px;
 				margin-right: 120px;
 				margin-bottom: 30PX;
 				padding: 10px;
 			}
 
-
 			h3,
 			p,
 			a,
 			button {
-
 				padding: 5px;
 				margin: 4px;
 				border-radius: 5px;
 			}
 		}
 
-
-
 		@media screen and (min-width:901px) and (max-width:1024px) {
-
-
-
-			/* Box card */
 			.box {
 				width: 780px;
 				margin-top: 20px;
@@ -216,38 +149,24 @@
 				margin-left: 75px;
 			}
 
-			/* ------------------- */
-
-
-			/* Note display */
-
 			.note {
-
 				width: 740px;
 				margin-right: 120px;
 				margin-bottom: 30PX;
 				padding: 10px;
 			}
 
-
 			h3,
 			p,
 			a,
 			button {
-
 				padding: 5px;
 				margin: 4px;
 				border-radius: 5px;
 			}
 		}
 
-
-
 		@media screen and (min-width:1025px) and (max-width:1436px) {
-
-
-
-			/* Box card */
 			.box {
 				width: 850px;
 				margin-top: 20px;
@@ -255,32 +174,21 @@
 				margin-left: 90px;
 			}
 
-			/* ------------------- */
-
-
-			/* Note display */
-
 			.note {
-
 				width: 780px;
 				margin-right: 120px;
 				margin-bottom: 30PX;
 				padding: 10px;
 			}
 
-
 			h3,
 			p,
 			a {
-
 				padding: 5px;
 				margin: 4px;
 				border-radius: 5px;
 			}
 		}
-
-
-		/* -------------------- */
 	</style>
 </head>
 
@@ -300,7 +208,6 @@
 		$conn = new mysqli("localhost", "root", "root", "sn_db");
 
 		$email = $_SESSION['email'];
-		// TODO: delete problem
 		$query = "SELECT * FROM notes where userID = '$email' order by created desc";
 		$result = mysqli_query($conn, $query);
 
@@ -308,20 +215,25 @@
 			$title = $notes["title"];
 			$content = $notes["content"];
 			$noteID = $notes["id"];
+			$created = $notes["created"];
 			echo '<div class="note">';
-			echo '<h3> Titel: ' . $title . '</h3>';
+			echo '<h3>' . $title . '</h3>';
 			echo '<p>' . $content . '</p>';
-			// TODO: style ID
 			echo "<form action='mynotes.php'>
-            <i class='far fa-edit'><input type='submit' name='edit' value='edit' style=' padding:5px; outline:none; border:none; background-color: rgba(0,0,0,0.0);'></i>
-            <i class='far fa-trash-alt'><input type='submit' name='delete' value='delete' style=' padding:5px; outline:none; border:none; background-color: rgba(0,0,0,0.0);'></i>
+            <i class='far fa-edit'><input type='submit' name='edit' value='Edit' style=' padding:5px; outline:none; border:none; background-color: rgba(0,0,0,0.0);'></i>
+            <i class='far fa-trash-alt'><input type='submit' name='delete' value='Delete' style=' padding:5px; outline:none; border:none; background-color: rgba(0,0,0,0.0);'></i>
+			<input type = 'text' name = 'nID' value = '" . $noteID . "' hidden> 
 			</form>";
+			echo "<h4 style='margin-left: 450px;margin-top:-30px;'> Added on: " . $created . "</h4>";
+
 			echo '</div>';
 		}
 		if (isset($_GET['edit'])) {
+			$noteID = $_GET['nID'];
 			echo "<script type='text/javascript'> window.location = 'edit_note.php?id=" . $noteID . "' </script>";
 		}
 		if (isset($_GET['delete'])) {
+			$noteID = $_GET['nID'];
 			$query = "DELETE FROM notes where id = '$noteID'";
 			if ($conn->query($query) === TRUE) {
 
@@ -334,10 +246,6 @@
 		}
 
 		?>
-
-
-
-
 
 </body>
 

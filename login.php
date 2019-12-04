@@ -6,7 +6,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Log In</title>
+	<title>SN | Login</title>
+	<!-- https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use -->
 	<link rel="stylesheet" type="text/css" href="resources/css/fontawesome/all.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 	<style>
@@ -137,17 +138,10 @@
 
 
 
-	<p style="color:#112d3d; background-color:rgba(249,228,115,.8); padding: 2px; position:absolute; top:450px; left:50px;">All your secrets in one place</p>
+	<p style="color:#112d3d; background-color:#f9e573; padding: 2px; position:absolute; top:450px; left:50px;">All your secrets in one place</p>
 
 	<div class="box">
-		<!-- TODO: logout message -->
-		<?php
-		if (isset($_SESSION['message'])) {
-			echo "<h2>" . $_SESSION['message'] . "</h2>";
-			unset($_SESSION['message']);
-		}
 
-		?>
 		<!-- Log in img  -->
 		<img src="resources/images/signup.png" alt="image-sign-up">
 		<br>

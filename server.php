@@ -16,14 +16,12 @@ define("DB_NAME", "sn_db");
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
 
-//capture the value from the form
+// User Registration
 if (isset($_POST['register'])) {
     $name = mysqli_real_escape_string($conn, $_POST['name']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $passwordconf = mysqli_real_escape_string($conn, $_POST['passwordconf']);
-
-    // TODO: backend validation
 
     // check if user email is used
     $user_email_check = "SELECT * FROM users WHERE email='$email' LIMIT 1";
@@ -42,14 +40,13 @@ if (isset($_POST['register'])) {
         $query = "INSERT INTO users(name,email,password)  VALUES('$name', '$email', '$password') ";
         mysqli_query($conn, $query);
         $_SESSION['email'] = $email;
-        $_SESSION['success'] = "You are now logged in";
+        $_SESSION["loggedIn"] = true;
         header('location: mynotes.php');
     }
 }
 
 
-// user login
-
+// User login
 if (isset($_POST['login'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
@@ -67,10 +64,11 @@ if (isset($_POST['login'])) {
         $results = mysqli_query($conn, $query);
         if (mysqli_num_rows($results) == 1) {
             $_SESSION['email'] = $email;
-            $_SESSION['success'] = "You are now logged in";
+            $_SESSION["loggedIn"] = true;
             header('location: mynotes.php');
         } else {
             array_push($errors, "Wrong email/password");
+            echo "<script> alert('Wrong email/password') </script>";
         }
     }
 }
@@ -93,11 +91,13 @@ if (isset($_POST['add-note'])) {
         $query = "INSERT INTO notes(title,content,userID)  VALUES('$title', '$content','$email') ";
         $results = mysqli_query($conn, $query);
         header('location: mynotes.php');
+    } else {
+        echo "<script> alert('Check your input') </script>";
     }
 }
 
 
-// edit personal information
+// Edit personal information
 if (isset($_POST['edit-info'])) {
     $name = mysqli_real_escape_string($conn, $_POST['name']);
     $currentPassword = mysqli_real_escape_string($conn, $_POST['curr-password']);
@@ -120,14 +120,13 @@ if (isset($_POST['edit-info'])) {
         echo '<h1>' . $rows['password'] . '</h1>';
         echo '<h1>' . md5($currentPassword) . '</h1>';
 
-        // TODO: FIX
         if ($rows['password'] == 'md5(' . md5($currentPassword) . ')') {
             $hashedNewPassword = md5($newPassword);
             $query = "UPDATE users SET name = '$name', password = 'md5($hashedNewPassword)' where email = '$session_email'";
             $results = mysqli_query($conn, $query);
             header('location: mynotes.php');
         } else {
-            echo '<h1> Password not correct</h1>';
+            echo "<script> alert('Password not correct') </script>";
         }
     }
 }
@@ -137,7 +136,6 @@ if (isset($_POST['recover-password'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $newPassword = mysqli_real_escape_string($conn, $_POST['new-password']);
     $confPassword = mysqli_real_escape_string($conn, $_POST['conf-password']);
-
 
     if (empty($email)) {
         array_push($errors, "Email can't be empty");
